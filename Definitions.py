@@ -127,8 +127,8 @@ def run_2ph(oct, Rad_file, clim_fn, r, opt_fn, pts_fn, smx_fp, mf, ts=60):
         res_fn = '%s/%s/res/%s_%s_R_%03d' % (Clim_f_name, Rad_f_name, Rad_f_name, Clim_f_name, r)
 
         #if not os.path.exists(dc_fn):
-        rfluxmtx = 'rfluxmtx -faf -n 4 @%s %s -I+ -y %d < %s - %s/%s/temp/whitesky.rad -i %s.oct | rmtxop -c .27 .66 .07 - > %s' % (
-                    opt_fn, bounces, sen_n, wp_fp, Clim_f_name, Rad_f_name, prj, dc_fn)
+        rfluxmtx = 'rfluxmtx -faf -n %d @%s %s -I+ -y %d < %s - %s/%s/temp/whitesky.rad -i %s.oct | rmtxop -c .27 .66 .07 - > %s' % (
+                    nproc, opt_fn, bounces, sen_n, wp_fp, Clim_f_name, Rad_f_name, prj, dc_fn)
 
         os.system(rfluxmtx)
 
